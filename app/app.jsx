@@ -23,7 +23,7 @@ class App extends React.Component {
         super(props);
         this.swap = this.swap.bind(this);
         this.state = {
-            pristine: true
+            pristine: false
         }
     }
     swap() {
@@ -36,8 +36,13 @@ class App extends React.Component {
             <div className="animated-container" style={ this.state.pristine ? {
                     paddingTop: '150px'
                 } : {
-                    paddingTop: '5px',
-                    paddingLeft: '15px'
+                    paddingTop: '10px',
+                    paddingBottom: '10px',
+                    paddingLeft: '15px',
+                    backgroundColor: 'whitesmoke',
+                    borderStyle: 'solid',
+                    borderColor: '#D8D8D8',
+                    borderWidth: '0px 0px 1px 0px'
                 }}>
                 <div className="animated-container" style={ this.state.pristine ? {
                         margin: '0 auto',
@@ -48,7 +53,8 @@ class App extends React.Component {
                         textAlign: 'left'
                     }}>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
-                            display: 'inline-block'
+                            display: 'inline-block',
+                            verticalAlign: 'middle'
                         }}>
                         <h1 className="animated-title" style={ this.state.pristine ? {
                                 fontSize: '4.5em',
@@ -56,20 +62,22 @@ class App extends React.Component {
                             } : {
                                 fontSize: '2em',
                                 marginBottom: '0px',
+                                marginTop: '0px',
+                                marginRight: '15px',
                                 fontWeight: 'normal'
                             }}>Ochre</h1>
                     </div>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
-                            display: 'inline-block'
+                            display: 'inline-block',
+                            width: '770px'
                         }}>
                         <input className="animated-input" type="text" id="q" name="q" style={{
-                                padding: '10px',
+                                padding: '7px',
                                 fontSize: '1.2em',
                                 width: '65%'
                             }} />
                     </div>
                 </div>
-                <a onClick={this.swap}>swap</a>
             </div>
         );
     }
