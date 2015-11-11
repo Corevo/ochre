@@ -22,9 +22,22 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.swap = this.swap.bind(this);
+        this.type = this.type.bind(this);
+        this.reset = this.reset.bind(this);
         this.state = {
-            pristine: false
+            pristine: true
         }
+    }
+    type() {
+        this.setState({
+            pristine: false
+        });
+    }
+    reset() {
+        this.setState({
+            pristine: true
+        });
+        this.refs.input.value = "";
     }
     swap() {
         this.setState({
@@ -56,22 +69,24 @@ class App extends React.Component {
                             display: 'inline-block',
                             verticalAlign: 'middle'
                         }}>
-                        <h1 className="animated-title" style={ this.state.pristine ? {
-                                fontSize: '4.5em',
-                                marginBottom: '30px'
-                            } : {
-                                fontSize: '2em',
-                                marginBottom: '0px',
-                                marginTop: '0px',
-                                marginRight: '15px',
-                                fontWeight: 'normal'
-                            }}>Ochre</h1>
+                        <a onClick={this.reset}>
+                            <h1 className="animated-title" style={ this.state.pristine ? {
+                                    fontSize: '4.5em',
+                                    marginBottom: '30px'
+                                } : {
+                                    fontSize: '2em',
+                                    marginBottom: '0px',
+                                    marginTop: '0px',
+                                    marginRight: '15px',
+                                    fontWeight: 'normal'
+                                }}>Ochre</h1>
+                        </a>
                     </div>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input className="animated-input" type="text" id="q" name="q" style={{
+                        <input ref="input" onKeyPress={this.type} className="animated-input" type="search" id="q" name="q" style={{
                                 padding: '7px',
                                 fontSize: '1.2em',
                                 width: '65%'
