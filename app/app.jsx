@@ -37,11 +37,15 @@ class App extends React.Component {
                             <h1 style={{
                                     fontSize: '4.5em',
                                     textTransform: 'capitalize',
-                                    marginBottom: '20px'
+                                    marginBottom: '30px'
                                 }}>Ochre</h1>
                         </div>
                         <div>
-                            <input type="text" id="q" name="q" />
+                            <input type="text" id="q" name="q" style={{
+                                    padding: '10px',
+                                    fontSize: '1.2em',
+                                    width: '65%'
+                                }} />
                         </div>
                     </div>
                 </center>
