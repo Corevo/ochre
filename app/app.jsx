@@ -32,12 +32,14 @@ class App extends React.Component {
     type(event) {
         this.setState({
             pristine: false,
-            rtl: (this.refs.input.value.length == 0 && event.key.charCodeAt() > 255)
+            rtl: (this.refs.input.value.length == 0 && event.key.charCodeAt() > 255),
+            showResults: true
         });
     }
     reset() {
         this.setState({
-            pristine: true
+            pristine: true,
+            showResults: false
         });
         this.refs.input.value = "";
     }
@@ -48,6 +50,7 @@ class App extends React.Component {
     }
     render () {
         return (
+            <div>
             <div className="animated-container" style={ this.state.pristine ? {
                     paddingTop: '150px'
                 } : {
@@ -96,6 +99,10 @@ class App extends React.Component {
                             }} />
                     </div>
                 </div>
+            </div>
+            <div style={{
+                    paddingLeft: '117px'
+                }}>{ this.state.showResults ? <Results /> : null }</div>
             </div>
         );
     }
