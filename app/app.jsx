@@ -21,33 +21,55 @@ class App extends React.Component {
     }
     constructor(props) {
         super(props);
+        this.swap = this.swap.bind(this);
+        this.state = {
+            pristine: true
+        }
+    }
+    swap() {
+        this.setState({
+            pristine: !this.state.pristine
+        });
     }
     render () {
         return (
-            <div style={{
+            <div className="animated-container" style={ this.state.pristine ? {
                     paddingTop: '150px'
+                } : {
+                    paddingTop: '5px',
+                    paddingLeft: '15px'
                 }}>
-                <div style={{
+                <div className="animated-container" style={ this.state.pristine ? {
                         margin: '0 auto',
                         maxWidth: 'none',
                         width: '1139px',
                         textAlign: 'center'
+                    } : {
+                        textAlign: 'left'
                     }}>
-                    <div>
-                        <h1 style={{
+                    <div className="animated-container" style={ this.state.pristine ? {} : {
+                            display: 'inline-block'
+                        }}>
+                        <h1 className="animated-title" style={ this.state.pristine ? {
                                 fontSize: '4.5em',
-                                textTransform: 'capitalize',
                                 marginBottom: '30px'
+                            } : {
+                                fontSize: '2em',
+                                marginBottom: '0px',
+                                fontWeight: 'normal'
                             }}>Ochre</h1>
                     </div>
-                    <div>
-                        <input type="text" id="q" name="q" style={{
+                    <div className="animated-container" style={ this.state.pristine ? {} : {
+                            display: 'inline-block'
+                        }}>
+                        <input className="animated-input" type="text" id="q" name="q" style={{
                                 padding: '10px',
                                 fontSize: '1.2em',
                                 width: '65%'
                             }} />
                     </div>
                 </div>
+                <a onClick={this.swap}>swap</a>
             </div>
         );
     }
