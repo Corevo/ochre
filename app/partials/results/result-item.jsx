@@ -9,10 +9,26 @@ export default class ResultItem extends React.Component {
     }
     render() {
         return (
-            <li>
-                <h3><a href={this.props.url}>{this.props.title}</a></h3>
-                <cite>{this.props.url}</cite>
-                <span>{this.props.date} - {this.props.summary}</span>
+            <li style={{
+                    listStyleType: 'none',
+                    width: '530px'
+                }}>
+                <h3 style={{
+                        marginBottom: '5px'
+                    }}>
+                    <a href={this.props.url} style={{
+                            textDecoration: 'none'
+                        }}>{this.props.title}</a>
+                </h3>
+                <span style={{
+                        lineHeight: '1.3em'
+                    }}>
+                    <cite style={{
+                            color: 'green',
+                            display: 'block'
+                        }}>{this.props.url}</cite>
+                    <span>{this.props.date} - {this.props.summary}</span>
+                </span>
             </li>
         );
     }
