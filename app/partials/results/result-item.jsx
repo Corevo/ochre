@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class ResultItem extends React.Component {
     static propTypes = {
-        title: React.propTypes.string.isRequired,
-        url: React.propTypes.string.isRequired,
-        date: React.propTypes.string.isRequired,
-        summary: React.propTypes.string.isRequired
+        title: React.PropTypes.string.isRequired,
+        url: React.PropTypes.string.isRequired,
+        date: React.PropTypes.string.isRequired,
+        summary: React.PropTypes.string.isRequired
     }
     render() {
         return (
