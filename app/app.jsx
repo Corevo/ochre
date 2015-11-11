@@ -23,6 +23,7 @@ class App extends React.Component {
         super(props);
         this.reset = this.reset.bind(this);
         this.change = this.change.bind(this);
+        this.press = this.press.bind(this);
         this.state = {
             pristine: true,
             rtl: false
@@ -38,9 +39,15 @@ class App extends React.Component {
     change() {
         this.setState({
             pristine: false,
-            rtl: (this.refs.input.value.length > 0 && this.refs.input.value[0].charCodeAt() > 255),
-            showResults: true
+            rtl: (this.refs.input.value.length > 0 && this.refs.input.value[0].charCodeAt() > 255)
         });
+    }
+    press(event) {
+        if (event.key === 'Enter') {
+            this.setState({
+                showResults: true
+            });
+        }
     }
     render () {
         return (
@@ -85,7 +92,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onChange={this.change} autoComplete="off" className="animated-input" type="search" id="q" name="q"
+                        <input ref="input" onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="search" id="q" name="q"
                             style={ this.state.rtl ? {
                                 direction: 'rtl'
                             } : {
@@ -96,7 +103,7 @@ class App extends React.Component {
             </div>
             <div style={{
                     paddingLeft: '117px'
-                }}>{ this.state.showResults ? <Results /> : null }</div>
+                }}>{ this.state.showResults ? <Results /> : this.state.pristine ? null : <p>Press Enter to search.</p> }</div>
             </div>
         );
     }
