@@ -27,28 +27,27 @@ class App extends React.Component {
             <div style={{
                     paddingTop: '150px'
                 }}>
-                <center>
-                    <div style={{
-                            margin: '0 auto',
-                            maxWidth: 'none',
-                            width: '1139px'
-                        }}>
-                        <div>
-                            <h1 style={{
-                                    fontSize: '4.5em',
-                                    textTransform: 'capitalize',
-                                    marginBottom: '30px'
-                                }}>Ochre</h1>
-                        </div>
-                        <div>
-                            <input type="text" id="q" name="q" style={{
-                                    padding: '10px',
-                                    fontSize: '1.2em',
-                                    width: '65%'
-                                }} />
-                        </div>
+                <div style={{
+                        margin: '0 auto',
+                        maxWidth: 'none',
+                        width: '1139px',
+                        textAlign: 'center'
+                    }}>
+                    <div>
+                        <h1 style={{
+                                fontSize: '4.5em',
+                                textTransform: 'capitalize',
+                                marginBottom: '30px'
+                            }}>Ochre</h1>
                     </div>
-                </center>
+                    <div>
+                        <input type="text" id="q" name="q" style={{
+                                padding: '10px',
+                                fontSize: '1.2em',
+                                width: '65%'
+                            }} />
+                    </div>
+                </div>
             </div>
         );
     }
