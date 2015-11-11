@@ -4,7 +4,7 @@ var webpack = require('webpack'),
 module.exports = {
     devtool: 'eval',
     entry: {
-        index: './app/app.js'
+        index: './app/app.jsx'
     },
     output: {
         filename: './public/assets/bin/[name].js'
