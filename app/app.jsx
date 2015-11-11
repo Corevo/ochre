@@ -86,7 +86,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onKeyPress={this.type} className="animated-input" type="search" id="q" name="q" style={{
+                        <input ref="input" onKeyPress={this.type} autoComplete="off" className="animated-input" type="search" id="q" name="q" style={{
                                 padding: '7px',
                                 fontSize: '1.2em',
                                 width: '65%'
