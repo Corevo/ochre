@@ -24,7 +24,28 @@ class App extends React.Component {
     }
     render () {
         return (
-            <h1>Hello World!</h1>
+            <div style={{
+                    marginTop: '150px'
+                }}>
+                <center>
+                    <div style={{
+                            margin: '0 auto',
+                            maxWidth: 'none',
+                            width: '1139px'
+                        }}>
+                        <div>
+                            <h1 style={{
+                                    fontSize: '4.5em',
+                                    textTransform: 'capitalize',
+                                    marginBottom: '20px'
+                                }}>Ochre</h1>
+                        </div>
+                        <div>
+                            <input type="text" id="q" name="q" />
+                        </div>
+                    </div>
+                </center>
+            </div>
         );
     }
 }
