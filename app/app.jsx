@@ -25,7 +25,7 @@ class App extends React.Component {
     render () {
         return (
             <div style={{
-                    marginTop: '150px'
+                    paddingTop: '150px'
                 }}>
                 <center>
                     <div style={{
