@@ -25,12 +25,14 @@ class App extends React.Component {
         this.type = this.type.bind(this);
         this.reset = this.reset.bind(this);
         this.state = {
-            pristine: true
+            pristine: true,
+            rtl: false
         }
     }
-    type() {
+    type(event) {
         this.setState({
-            pristine: false
+            pristine: false,
+            rtl: (this.refs.input.value.length == 0 && event.key.charCodeAt() > 255)
         });
     }
     reset() {
@@ -86,10 +88,11 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onKeyPress={this.type} autoComplete="off" className="animated-input" type="search" id="q" name="q" style={{
-                                padding: '7px',
-                                fontSize: '1.2em',
-                                width: '65%'
+                        <input ref="input" onKeyPress={this.type} autoComplete="off" className="animated-input" type="search" id="q" name="q"
+                            style={ this.state.rtl ? {
+                                direction: 'rtl'
+                            } : {
+                                direction: 'ltr'
                             }} />
                     </div>
                 </div>

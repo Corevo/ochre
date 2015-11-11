@@ -15,3 +15,9 @@ h1 {
 .animated-title {
     text-transform: capitalize;
 }
+
+.animated-input {
+    padding: 7px;
+    font-size: 1.2em;
+    width: 65%;
+}
