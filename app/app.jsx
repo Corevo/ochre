@@ -21,20 +21,12 @@ class App extends React.Component {
     }
     constructor(props) {
         super(props);
-        this.swap = this.swap.bind(this);
-        this.type = this.type.bind(this);
         this.reset = this.reset.bind(this);
+        this.change = this.change.bind(this);
         this.state = {
             pristine: true,
             rtl: false
         }
-    }
-    type(event) {
-        this.setState({
-            pristine: false,
-            rtl: (this.refs.input.value.length == 0 && event.key.charCodeAt() > 255),
-            showResults: true
-        });
     }
     reset() {
         this.setState({
@@ -43,9 +35,11 @@ class App extends React.Component {
         });
         this.refs.input.value = "";
     }
-    swap() {
+    change() {
         this.setState({
-            pristine: !this.state.pristine
+            pristine: false,
+            rtl: (this.refs.input.value.length > 0 && this.refs.input.value[0].charCodeAt() > 255),
+            showResults: true
         });
     }
     render () {
@@ -91,7 +85,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onKeyPress={this.type} autoComplete="off" className="animated-input" type="search" id="q" name="q"
+                        <input ref="input" onChange={this.change} autoComplete="off" className="animated-input" type="search" id="q" name="q"
                             style={ this.state.rtl ? {
                                 direction: 'rtl'
                             } : {
