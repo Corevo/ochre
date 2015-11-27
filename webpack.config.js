@@ -13,7 +13,12 @@ module.exports = {
         loaders: [
             {
                 test: /app(\/|\\).*\.(js||jsx)$/,
-                loader: 'babel-loader?stage=0'
+                loader: 'babel',
+                query: {
+                    // https://github.com/babel/babel-loader#options
+                    cacheDirectory: true,
+                    presets: ['es2015', 'stage-0', 'react']
+                }
             }
         ]
     },
