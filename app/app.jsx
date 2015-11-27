@@ -92,7 +92,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="search" id="q" name="q"
+                        <input ref="input" onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="text" id="q" name="q"
                             style={ this.state.rtl ? {
                                 direction: 'rtl'
                             } : {
