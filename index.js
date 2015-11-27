@@ -1,5 +1,5 @@
 require('babel-core/register')({
-    stage: 0
+    presets: ['es2015', 'stage-0']
 });
 
 require('./app.js');
