@@ -7,8 +7,9 @@ import { createStore, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { createHistory } from 'history';
 import searchApp from './redux/reducers';
-import { addResults } from './redux/actions';
+import { addResults, showResults } from './redux/actions';
 import Results from './views/results.jsx';
+import request from 'superagent';
 
 let store = compose(
     reduxReactRouter({ createHistory })
@@ -30,9 +31,9 @@ class App extends React.Component {
         }
     }
     reset() {
+        dispatch(showResults(false));
         this.setState({
-            pristine: true,
-            showResults: false
+            pristine: true
         });
         this.refs.input.value = "";
     }
@@ -44,8 +45,12 @@ class App extends React.Component {
     }
     press(event) {
         if (event.key === 'Enter') {
-            this.setState({
-                showResults: true
+            request.get('/api/s/' + this.refs.input.value).end((err, res) => {
+                if (!err) {
+                    debugger;
+                    dispatch(addResults(JSON.parse(res.text)));
+                    dispatch(showResults(true));
+                }
             });
         }
     }
@@ -103,7 +108,7 @@ class App extends React.Component {
             </div>
             <div style={{
                     paddingLeft: '117px'
-                }}>{ this.state.showResults ? <Results /> : this.state.pristine ? null : <p>Press Enter to search.</p> }</div>
+                }}>{ this.props.showResults ? <Results results={ this.props.results } /> : this.state.pristine ? null : <p>Press Enter to search.</p> }</div>
             </div>
         );
     }
@@ -113,7 +118,8 @@ let Appx = connect(
     // Use a selector to subscribe to state
     state => ({
         q: state.router.location.query.q,
-        results: state.results
+        results: state.results,
+        showResults: state.showResults
     }),
     // Use an action creator for navigation
     { pushState }
