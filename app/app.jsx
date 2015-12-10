@@ -47,7 +47,6 @@ class App extends React.Component {
         if (event.key === 'Enter') {
             request.get('/api/s/' + this.refs.input.value).end((err, res) => {
                 if (!err) {
-                    debugger;
                     dispatch(addResults(JSON.parse(res.text)));
                     dispatch(showResults(true));
                 }
