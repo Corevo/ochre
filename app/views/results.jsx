@@ -7,7 +7,9 @@ export default class Results extends React.Component {
             <ol style={{
                     paddingLeft: '0px'
                 }}>
-                <ResultItem title="Google" url="https://www.google.com/" date="Sep 4, 1988" summary="Google Inc. is an American multinational technology company specializing in Internet-related services and products." />
+                { this.props.results.map(result => (
+                    <ResultItem key={ result.title } title={result.title} url={ result.url } date={ result.date } summary={ result.desc } />
+                ))}
             </ol>
         );
     }
