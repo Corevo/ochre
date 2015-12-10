@@ -13,7 +13,7 @@ function results(state = [], action) {
 
 function showResults(state = false, action) {
     switch (action.type) {
-        case showResults:
+        case SHOW_RESULTS:
         return action.show;
         default:
         return state;
