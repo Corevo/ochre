@@ -1,8 +1,16 @@
 var webpack = require('webpack'),
     CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
+var plugins = [
+    //new CommonsChunkPlugin('./public/common.js'),
+];
+
+if (process.env.NODE_ENV === 'production') {
+    plugins.push(new webpack.optimize.UglifyJsPlugin({}));
+}
+
 module.exports = {
-    devtool: 'eval',
+    devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval',
     entry: {
         index: './app/app'
     },
@@ -22,10 +30,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        //new CommonsChunkPlugin('./public/common.js'),
-        //new webpack.optimize.UglifyJsPlugin({})
-    ],
+    plugins: plugins,
     resolve: {
         extensions: ['', '.js', '.json', '.jsx']
     }
