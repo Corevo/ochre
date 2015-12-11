@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultItem from '../partials/results/result-item.jsx';
+import ResultItem from '../partials/results/result-item';
 
 export default class Results extends React.Component {
     render () {

@@ -4,7 +4,7 @@ var webpack = require('webpack'),
 module.exports = {
     devtool: 'eval',
     entry: {
-        index: './app/app.jsx'
+        index: './app/app'
     },
     output: {
         filename: './public/assets/bin/[name].js'
@@ -25,5 +25,8 @@ module.exports = {
     plugins: [
         //new CommonsChunkPlugin('./public/common.js'),
         //new webpack.optimize.UglifyJsPlugin({})
-    ]
+    ],
+    resolve: {
+        extensions: ['', '.js', '.json', '.jsx']
+    }
 };

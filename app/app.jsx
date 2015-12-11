@@ -8,7 +8,7 @@ import { Provider, connect } from 'react-redux';
 import { createHistory } from 'history';
 import searchApp from './redux/reducers';
 import { addResults, showResults } from './redux/actions';
-import Results from './views/results.jsx';
+import Results from './views/results';
 import request from 'superagent';
 
 let store = compose(
