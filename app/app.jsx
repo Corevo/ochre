@@ -82,14 +82,16 @@ class App extends React.Component {
                         <a onClick={this.reset}>
                             <h1 className="animated-title" style={ this.state.pristine ? {
                                     fontSize: '4.5em',
-                                    marginBottom: '30px'
+                                    marginBottom: '30px',
+                                    display: 'inline-block'
                                 } : {
                                     fontSize: '2em',
                                     marginBottom: '0px',
                                     marginTop: '0px',
                                     marginRight: '15px',
                                     fontWeight: 'normal'
-                                }}>Ochre</h1>
+                                }}>חיפוש</h1>
+                            { this.state.pristine ? <img src="/assets/images/logo.png" height="100" /> : undefined }
                         </a>
                     </div>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
