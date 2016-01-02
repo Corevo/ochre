@@ -27,7 +27,9 @@ export default class ResultItem extends React.Component {
                             color: 'green',
                             display: 'block'
                         }}>{this.props.url}</cite>
-                    <span>{this.props.date} - {this.props.summary}</span>
+                    <span dangerouslySetInnerHTML={{
+                            __html: `${this.props.date} - ${this.props.summary}`
+                        }} />
                 </span>
             </li>
         );
