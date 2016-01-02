@@ -22,3 +22,7 @@ h1 {
     font-size: 1.2em;
     width: 65%;
 }
+
+em {
+    font-weight: bold;
+}
