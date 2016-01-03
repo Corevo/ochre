@@ -105,6 +105,12 @@ class App extends React.Component {
                                 direction: 'ltr'
                             }} />
                     </div>
+                    <div style={{
+                            marginTop: '30px'
+                        }}>
+                        <input type="submit" className="search-btn" value="חיפוש" />
+                        <input type="submit" className="search-btn" value="חיפוש בתגיות בלבד" />
+                    </div>
                 </div>
             </div>
             <div style={{
