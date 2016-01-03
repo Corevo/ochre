@@ -105,8 +105,10 @@ class App extends React.Component {
                                 direction: 'ltr'
                             }} />
                     </div>
-                    <div style={{
+                    <div style={ this.state.pristine ? {
                             marginTop: '30px'
+                        } : {
+                            marginTop: '15px'
                         }}>
                         <input id="tags" type="checkbox" value="tags" />
                         <label htmlFor="tags" style={{
