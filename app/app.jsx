@@ -61,7 +61,7 @@ class App extends React.Component {
                 } : {
                     paddingTop: '10px',
                     paddingBottom: '10px',
-                    paddingLeft: '15px',
+                    paddingRight: '15px',
                     backgroundColor: 'whitesmoke',
                     borderStyle: 'solid',
                     borderColor: '#D8D8D8',
@@ -73,7 +73,7 @@ class App extends React.Component {
                         width: '1139px',
                         textAlign: 'center'
                     } : {
-                        textAlign: 'left'
+                        textAlign: 'right'
                     }}>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
                             display: 'inline-block',
@@ -89,7 +89,7 @@ class App extends React.Component {
                                     fontSize: '2em',
                                     marginBottom: '0px',
                                     marginTop: '0px',
-                                    marginRight: '15px',
+                                    marginLeft: '15px',
                                     fontWeight: 'normal'
                                 }}>חיפוש</h1>
                         </a>
@@ -118,8 +118,8 @@ class App extends React.Component {
                 </div>
             </div>
             <div style={{
-                    paddingLeft: '117px'
-                }}>{ this.props.showResults ? <Results results={ this.props.results } /> : this.state.pristine ? null : <p>Press Enter to search.</p> }</div>
+                    paddingRight: '117px'
+                }}>{ this.props.showResults ? <Results results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
             </div>
         );
     }
