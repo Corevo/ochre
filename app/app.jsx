@@ -25,10 +25,17 @@ class App extends React.Component {
         this.reset = this.reset.bind(this);
         this.change = this.change.bind(this);
         this.press = this.press.bind(this);
+        this.checkboxChange = this.checkboxChange.bind(this);
         this.state = {
             pristine: true,
-            rtl: false
+            rtl: false,
+            tags: false
         }
+    }
+    checkboxChange(event) {
+        this.setState({
+            tags: event.currentTarget.checked
+        })
     }
     reset() {
         dispatch(showResults(false));
@@ -110,7 +117,7 @@ class App extends React.Component {
                         } : {
                             marginTop: '15px'
                         }}>
-                        <input id="tags" type="checkbox" value="tags" />
+                        <input id="tags" onChange={this.checkboxChange} type="checkbox" value="tags" />
                         <label htmlFor="tags" style={{
                                 verticalAlign: 'text-bottom'
                             }}>חיפוש בעזרת תגיות בלבד</label>
