@@ -26,32 +26,3 @@ em {
     font-size: 1.2em;
     width: 65%;
 }
-
-.search-btn {
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-    -webkit-border-radius: 2px;
-    -webkit-user-select: none;
-    background-color: #f2f2f2;
-    border: 1px solid #E2E2E2;
-    border-radius: 2px;
-    color: #757575;
-    cursor: default;
-    font-size: 1em;
-    font-weight: bold;
-    margin: 11px 4px;
-    min-width: 54px;
-    padding: 0 16px;
-    text-align: center;
-    height: 36px;
-    line-height: 27px
-}
-
-.search-btn:hover {
-    color: #222;
-    border: 1px solid #c6c6c6;
-}
-
-.search-btn:focus {
-    border: 1px solid #4d90fe;
-    outline: none;
-}
