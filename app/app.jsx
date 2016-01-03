@@ -80,6 +80,7 @@ class App extends React.Component {
                             verticalAlign: 'middle'
                         }}>
                         <a onClick={this.reset}>
+                            { this.state.pristine ? <img src="/assets/images/logo.png" height="100" /> : undefined }
                             <h1 className="animated-title" style={ this.state.pristine ? {
                                     fontSize: '4.5em',
                                     marginBottom: '30px',
@@ -91,7 +92,6 @@ class App extends React.Component {
                                     marginRight: '15px',
                                     fontWeight: 'normal'
                                 }}>חיפוש</h1>
-                            { this.state.pristine ? <img src="/assets/images/logo.png" height="100" /> : undefined }
                         </a>
                     </div>
                     <div className="animated-container" style={ this.state.pristine ? {} : {
