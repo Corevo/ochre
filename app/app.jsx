@@ -52,7 +52,8 @@ class App extends React.Component {
     }
     press(event) {
         if (event.key === 'Enter') {
-            request.get('/api/s/' + this.refs.input.value).end((err, res) => {
+            let requestUrl = '/api/s/' + this.refs.input.value;
+            request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
                 if (!err) {
                     dispatch(addResults(JSON.parse(res.text)));
                     dispatch(showResults(true));
