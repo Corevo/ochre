@@ -108,8 +108,8 @@ class App extends React.Component {
                     <div style={{
                             marginTop: '30px'
                         }}>
-                        <input type="submit" className="search-btn" value="חיפוש" />
-                        <input type="submit" className="search-btn" value="חיפוש בתגיות בלבד" />
+                        <input type="checkbox" value="tags" />
+                        <span>חיפוש בעזרת תגיות בלבד</span>
                     </div>
                 </div>
             </div>
