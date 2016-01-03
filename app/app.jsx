@@ -109,7 +109,9 @@ class App extends React.Component {
                             marginTop: '30px'
                         }}>
                         <input type="checkbox" value="tags" />
-                        <span>חיפוש בעזרת תגיות בלבד</span>
+                        <span style={{
+                                verticalAlign: 'text-bottom'
+                            }}>חיפוש בעזרת תגיות בלבד</span>
                     </div>
                 </div>
             </div>
