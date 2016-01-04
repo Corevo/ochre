@@ -1,4 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+
+const format = "dddd, Do בMMMM YYYY";
+moment.format = format;
+moment.locale('he');
 
 export default class ResultItem extends React.Component {
     static propTypes = {
@@ -33,7 +38,7 @@ export default class ResultItem extends React.Component {
                             direction: 'ltr'
                         }}>{this.props.url}</cite>
                     <span dangerouslySetInnerHTML={{
-                            __html: `${this.props.date} - ${this.props.summary}`
+                            __html: `${moment(this.props.date).format(format)} - ${this.props.summary}`
                         }} />
                 </span>
             </li>
