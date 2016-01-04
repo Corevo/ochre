@@ -5,7 +5,7 @@ export default class Results extends React.Component {
     render () {
         return (
             <ol style={{
-                    paddingLeft: '0px'
+                    paddingRight: '0px'
                 }}>
                 { this.props.results.map(result => (
                     <ResultItem key={ result.title } title={result.title} url={ result.url } date={ new Date(result.date).toDateString() } summary={ result.desc.substr(0, 350) } />
