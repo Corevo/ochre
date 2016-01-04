@@ -25,6 +25,7 @@
     "elasticsearch": "^10.0.1",
     "express": "^4.13.3",
     "history": "^1.15.0",
+    "moment": "^2.11.0",
     "react": "^0.14.1",
     "react-dom": "^0.14.1",
     "react-redux": "^4.0.0",
