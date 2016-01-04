@@ -5,9 +5,13 @@ export default class ResultItem extends React.Component {
         title: React.PropTypes.string.isRequired,
         url: React.PropTypes.string.isRequired,
         date: React.PropTypes.string.isRequired,
-        summary: React.PropTypes.string.isRequired
+        summary: React.PropTypes.string.isRequired,
+        author: React.PropTypes.string,
+        unit: React.PropTypes.string
     }
     render() {
+        let optionalAuthor = this.props.unit ? this.props.unit + ' ' : '';
+        optionalAuthor += this.props.author ? this.props.author + ' ' : '';
         return (
             <li style={{
                     listStyleType: 'none',
