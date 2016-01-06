@@ -37,7 +37,7 @@ export default class ResultItem extends React.Component {
                             display: 'block',
                             direction: 'ltr'
                         }}>{this.props.url}</cite>
-                    <span><em>{`${moment(new Date(this.props.date)).format(format)} ${optionalAuthor}`}</em></span>
+                    <div><em>{`${moment(new Date(this.props.date)).format(format)} ${optionalAuthor}`}</em></div>
                     <span dangerouslySetInnerHTML={{
                             __html: `${this.props.summary}`
                         }} />
