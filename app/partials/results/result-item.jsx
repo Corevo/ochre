@@ -13,7 +13,7 @@ export default class ResultItem extends React.Component {
         summary: React.PropTypes.string.isRequired,
         author: React.PropTypes.string,
         unit: React.PropTypes.string
-    }
+    };
     render() {
         let optionalAuthor = this.props.unit ? this.props.unit + ' ' : '';
         optionalAuthor += this.props.author ? this.props.author + ' ' : '';
