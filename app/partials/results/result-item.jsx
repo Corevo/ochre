@@ -12,7 +12,8 @@ export default class ResultItem extends React.Component {
         date: React.PropTypes.string.isRequired,
         summary: React.PropTypes.string.isRequired,
         author: React.PropTypes.string,
-        unit: React.PropTypes.string
+        unit: React.PropTypes.string,
+        tags: React.PropTypes.array
     };
     render() {
         let optionalAuthor = this.props.unit ? this.props.unit + ' ' : '';
