@@ -54,7 +54,7 @@ export default class ResultItem extends React.Component {
                         display: "flex"
                     }}>
                     { this.props.tags.map(item => (
-                        <li style={{
+                        <li key={item} style={{
                             paddingLeft: "0.5em"
                         }}><a onClick={this.tagSearch.bind(this, item)} style={{
                             color: "green",
