@@ -48,15 +48,21 @@ export default class ResultItem extends React.Component {
                     <span className="desc" dangerouslySetInnerHTML={{
                             __html: this.props.summary
                         }} />
-                    <ul style={{
+                    { this.props.tags ? <ul style={{
                         listStyle: "none",
-                        padding: "0"
+                        padding: "0",
+                        display: "flex"
                     }}>
-                    <li><a onClick={this.tagSearch.bind(this, "kaki")} style={{
-                        color: "green",
-                        textDecoration: "none"
-                    }}>kaki</a></li>
-                    </ul>
+                    { this.props.tags.map(item => (
+                        <li style={{
+                            paddingLeft: "0.5em"
+                        }}><a onClick={this.tagSearch.bind(this, item)} style={{
+                            color: "green",
+                            textDecoration: "none",
+                            cursor: "pointer"
+                        }}>{item}</a></li>
+                    ))}
+                    </ul> : undefined }
                 </span>
             </li>
         );

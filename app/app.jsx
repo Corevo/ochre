@@ -26,6 +26,7 @@ class App extends React.Component {
         this.change = this.change.bind(this);
         this.press = this.press.bind(this);
         this.checkboxChange = this.checkboxChange.bind(this);
+        this.search = this.search.bind(this);
         this.state = {
             pristine: true,
             rtl: false,
@@ -50,18 +51,22 @@ class App extends React.Component {
             rtl: (this.refs.input.value.length > 0 && this.refs.input.value[0].charCodeAt() > 255)
         });
     }
+    search(query) {
+        this.refs.input.value = query;
+        let requestUrl = '/api/s/' + query;
+        request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
+            if (!err) {
+                dispatch(addResults(JSON.parse(res.text)));
+                dispatch(showResults(true));
+            }
+        });
+    }
     press(event) {
         if (event.key === 'Enter') {
-            let requestUrl = '/api/s/' + this.refs.input.value;
-            request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
-                if (!err) {
-                    dispatch(addResults(JSON.parse(res.text)));
-                    dispatch(showResults(true));
-                }
-            });
+            this.search(this.refs.input.value);
         }
     }
-    render () {
+    render() {
         return (
             <div>
             <div className="animated-container" style={ this.state.pristine ? {
@@ -127,7 +132,7 @@ class App extends React.Component {
             </div>
             <div style={{
                     paddingRight: '117px'
-                }}>{ this.props.showResults ? <Results results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
+                }}>{ this.props.showResults ? <Results search={this.search} results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
             </div>
         );
     }
