@@ -13,8 +13,14 @@ export default class ResultItem extends React.Component {
         summary: React.PropTypes.string.isRequired,
         author: React.PropTypes.string,
         unit: React.PropTypes.string,
-        tags: React.PropTypes.array
+        tags: React.PropTypes.array,
+        search: React.PropTypes.func
     };
+    tagSearch(tag) {
+        if (this.props.search) {
+            this.props.search(tag);
+        }
+    }
     render() {
         let optionalAuthor = this.props.unit ? this.props.unit + ' ' : '';
         optionalAuthor += this.props.author ? this.props.author + ' ' : '';
@@ -42,6 +48,15 @@ export default class ResultItem extends React.Component {
                     <span className="desc" dangerouslySetInnerHTML={{
                             __html: this.props.summary
                         }} />
+                    <ul style={{
+                        listStyle: "none",
+                        padding: "0"
+                    }}>
+                    <li><a onClick={this.tagSeach.bind(this, "kaki")} style={{
+                        color: "green",
+                        textDecoration: "none"
+                    }}>kaki</a></li>
+                    </ul>
                 </span>
             </li>
         );
