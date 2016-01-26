@@ -52,7 +52,7 @@ export default class ResultItem extends React.Component {
                         listStyle: "none",
                         padding: "0"
                     }}>
-                    <li><a onClick={this.tagSeach.bind(this, "kaki")} style={{
+                    <li><a onClick={this.tagSearch.bind(this, "kaki")} style={{
                         color: "green",
                         textDecoration: "none"
                     }}>kaki</a></li>
