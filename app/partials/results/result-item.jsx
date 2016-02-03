@@ -56,7 +56,7 @@ export default class ResultItem extends React.Component {
                     { this.props.tags.map(item => (
                         <li key={item} style={{
                             paddingLeft: "0.5em"
-                        }}><a onClick={this.tagSearch.bind(this, item)} style={{
+                        }}><a href={`/${item}`} target="_blank" style={{
                             color: "green",
                             textDecoration: "none",
                             cursor: "pointer"
