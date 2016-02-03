@@ -76,7 +76,7 @@ class App extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
-            let requestUrl = '/api/s/' + nextProps.location.pathname;
+            let requestUrl = '/api/s/' + decodeURI(nextProps.location.pathname).replace('/', '');
             request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
                 if (!err) {
                     dispatch(addResults(JSON.parse(res.text)));
