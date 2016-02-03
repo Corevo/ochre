@@ -30,7 +30,8 @@ class App extends React.Component {
         this.state = {
             pristine: true,
             rtl: false,
-            tags: false
+            tags: false,
+            query: ""
         }
     }
     checkboxChange(event) {
@@ -52,18 +53,36 @@ class App extends React.Component {
         });
     }
     search(query) {
-        this.refs.input.value = query;
-        let requestUrl = '/api/s/' + query;
-        request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
-            if (!err) {
-                dispatch(addResults(JSON.parse(res.text)));
-                dispatch(showResults(true));
-            }
-        });
+        if (this.refs.input) {
+            this.refs.input.value = query;
+        }
+        dispatch(pushState(null, query));
     }
     press(event) {
         if (event.key === 'Enter') {
             this.search(this.refs.input.value);
+        }
+    }
+    componentWillMount() {
+        let query = decodeURI(this.props.location.pathname).substr(1);
+        if (query) {
+            this.setState({
+                query,
+                pristine: false,
+                rtl: (query[0].charCodeAt() > 255)
+            });
+            this.search(query);
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.location.pathname !== nextProps.location.pathname) {
+            let requestUrl = '/api/s/' + nextProps.location.pathname;
+            request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
+                if (!err) {
+                    dispatch(addResults(JSON.parse(res.text)));
+                    dispatch(showResults(true));
+                }
+            });
         }
     }
     render() {
@@ -111,7 +130,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="text" id="q" name="q"
+                        <input ref="input" defaultValue={this.state.query} onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="text" id="q" name="q"
                             style={ this.state.rtl ? {
                                 direction: 'rtl'
                             } : {
