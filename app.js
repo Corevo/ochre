@@ -1,15 +1,15 @@
 import express from 'express';
 import path from 'path';
+import files from './lib/routes/files';
 import elastic from './lib/routes/elastic';
 
-let port = 80;
+let port = 8080;
 let app = express();
 
 const STATIC_DIR = path.join(__dirname, 'public/assets');
 app.use('/assets', express.static(STATIC_DIR));
 
-const FILES_PATH = process.env.FILES_PATH || '/data';
-app.use('/files', express.static(FILES_PATH));
+app.use('/files', files);
 
 app.use('/api', elastic);
 
