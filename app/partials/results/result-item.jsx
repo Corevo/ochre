@@ -33,8 +33,14 @@ export default class ResultItem extends React.Component {
                         marginBottom: '5px'
                     }}>
                     <a target="_blank" href={this.props.url} style={{
-                            textDecoration: 'none'
-                        }}>{this.props.title}</a>
+                        textDecoration: 'none',
+                        display: 'inline-block'
+                    }}>{this.props.title}</a>
+                    <a target="_blank" href={`//tags.amutakesher.org.il${this.props.url.substr(0, this.props.url.lastIndexOf('/')).substr(this.props.url.indexOf('/', 1))}`} style={{
+                        marginRight: "10px",
+                        textDecoration: "none",
+                        color: "black"
+                    }}>עריכה</a>
                 </h3>
                 <span style={{
                         lineHeight: '1.3em'
