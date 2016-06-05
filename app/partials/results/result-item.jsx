@@ -16,6 +16,17 @@ export default class ResultItem extends React.Component {
         tags: React.PropTypes.array,
         search: React.PropTypes.func
     };
+    constructor(props) {
+        super(props);
+        this.state = {
+            more: false
+        };
+    }
+    componentWillMount() {
+        if (this.props.tags && this.props.tags.length <= 5) {
+            this.setState({more: true});
+        }
+    }
     tagSearch(tag) {
         if (this.props.search) {
             this.props.search(tag);
@@ -59,7 +70,7 @@ export default class ResultItem extends React.Component {
                         padding: "0",
                         display: "flex"
                     }}>
-                    { this.props.tags.map(item => (
+                    {(this.state.more ? this.props.tags : this.props.tags.slice(0, 5)).map(item => (
                         <li key={item} style={{
                             paddingLeft: "0.5em"
                         }}><a href={`/${item}`} target="_blank" style={{
@@ -68,6 +79,13 @@ export default class ResultItem extends React.Component {
                             cursor: "pointer"
                         }}>{item}</a></li>
                     ))}
+                    {!this.state.more ? <li key="more" style={{
+                        paddingLeft: "0.5em"
+                    }}><a onClick={() => this.setState({more: !this.state.more})} style={{
+                        color: "green",
+                        textDecoration: "none",
+                        cursor: "pointer"
+                    }}>עוד</a></li> : undefined}
                     </ul> : undefined }
                 </span>
             </li>
