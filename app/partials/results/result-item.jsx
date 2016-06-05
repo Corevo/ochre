@@ -35,6 +35,8 @@ export default class ResultItem extends React.Component {
     render() {
         let optionalAuthor = this.props.unit ? this.props.unit + ' ' : '';
         optionalAuthor += this.props.author ? this.props.author + ' ' : '';
+        let filePath = this.props.url.substr(0, this.props.url.lastIndexOf('/')).substr(this.props.url.indexOf('/', 1));
+        let fileName = this.props.url.substr(this.props.url.lastIndexOf('/') + 1);
         return (
             <li style={{
                     listStyleType: 'none',
@@ -47,7 +49,7 @@ export default class ResultItem extends React.Component {
                         textDecoration: 'none',
                         display: 'inline-block'
                     }}>{this.props.title}</a>
-                    <a target="_blank" href={`//tags.amutakesher.org.il${this.props.url.substr(0, this.props.url.lastIndexOf('/')).substr(this.props.url.indexOf('/', 1))}`} style={{
+                <a target="_blank" href={`//tags.amutakesher.org.il${filePath}?op=/api/files${filePath}/${fileName}&of=${fileName}`} style={{
                         marginRight: "10px",
                         textDecoration: "none",
                         color: "black"
