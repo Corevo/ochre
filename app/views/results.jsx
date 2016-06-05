@@ -10,7 +10,7 @@ export default class Results extends React.Component {
             <div>
                 <p style={{
                     color: "#808080"
-                }}>נמתאו {this.props.results.length} תוצאות</p>
+                }}>נמצאו {this.props.results.length} תוצאות</p>
                 <ol style={{
                         paddingRight: '0px'
                     }}>
