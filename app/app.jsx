@@ -19,17 +19,19 @@ const dispatch = store.dispatch;
 class App extends React.Component {
     static propTypes = {
         children: React.PropTypes.node
-    }
+    };
     constructor(props) {
         super(props);
         this.reset = this.reset.bind(this);
         this.change = this.change.bind(this);
         this.press = this.press.bind(this);
         this.checkboxChange = this.checkboxChange.bind(this);
+        this.search = this.search.bind(this);
         this.state = {
             pristine: true,
             rtl: false,
-            tags: false
+            tags: false,
+            query: ""
         }
     }
     checkboxChange(event) {
@@ -50,9 +52,31 @@ class App extends React.Component {
             rtl: (this.refs.input.value.length > 0 && this.refs.input.value[0].charCodeAt() > 255)
         });
     }
+    search(query) {
+        if (this.refs.input) {
+            this.refs.input.value = query;
+        }
+        dispatch(pushState(null, query));
+    }
     press(event) {
         if (event.key === 'Enter') {
-            let requestUrl = '/api/s/' + this.refs.input.value;
+            this.search(this.refs.input.value);
+        }
+    }
+    componentWillMount() {
+        let query = decodeURI(this.props.location.pathname).substr(1);
+        if (query) {
+            this.setState({
+                query,
+                pristine: false,
+                rtl: (query[0].charCodeAt() > 255)
+            });
+            this.search(query);
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.location.pathname !== nextProps.location.pathname) {
+            let requestUrl = '/api/s/' + decodeURI(nextProps.location.pathname).replace('/', '');
             request.get(this.state.tags ? requestUrl + '?tags=true' : requestUrl).end((err, res) => {
                 if (!err) {
                     dispatch(addResults(JSON.parse(res.text)));
@@ -61,7 +85,7 @@ class App extends React.Component {
             });
         }
     }
-    render () {
+    render() {
         return (
             <div>
             <div className="animated-container" style={ this.state.pristine ? {
@@ -106,7 +130,7 @@ class App extends React.Component {
                             display: 'inline-block',
                             width: '770px'
                         }}>
-                        <input ref="input" onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="text" id="q" name="q"
+                        <input ref="input" defaultValue={this.state.query} onChange={this.change} onKeyPress={this.press} autoComplete="off" className="animated-input" type="text" id="q" name="q"
                             style={ this.state.rtl ? {
                                 direction: 'rtl'
                             } : {
@@ -127,7 +151,7 @@ class App extends React.Component {
             </div>
             <div style={{
                     paddingRight: '117px'
-                }}>{ this.props.showResults ? <Results results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
+                }}>{ this.props.showResults ? <Results search={this.search} results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
             </div>
         );
     }
