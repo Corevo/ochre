@@ -3,7 +3,7 @@ import path from 'path';
 import files from './lib/routes/files';
 import elastic from './lib/routes/elastic';
 
-let port = 8080;
+let port = process.env.OCHRE_PORT || 80;
 let app = express();
 
 const STATIC_DIR = path.join(__dirname, 'public/assets');
