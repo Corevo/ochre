@@ -47,11 +47,11 @@ export default class ResultItem extends React.Component {
                     }}>
                     <a target="_blank" href={this.props.url} style={{
                         textDecoration: 'none',
-                        display: 'inline-block'
+                        display: 'inline'
                     }}>{this.props.title}</a>
                 <a target="_blank" href={`//tags.amutakesher.org.il${filePath}?op=/api/files${filePath}/${fileName}&of=${fileName}`} style={{
                         marginRight: "10px",
-                        textDecoration: "none",
+                        textDecoration: "underline",
                         color: "black"
                     }}>עריכה</a>
                 </h3>
