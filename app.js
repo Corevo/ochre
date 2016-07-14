@@ -8,8 +8,10 @@ let app = express();
 
 const STATIC_DIR = path.join(__dirname, 'public/assets');
 app.use('/assets', express.static(STATIC_DIR));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/lib/views');
 
-app.use('/files', files);
+app.use('/', files);
 
 app.use('/api', elastic);
 
