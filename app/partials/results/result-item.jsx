@@ -45,7 +45,7 @@ export default class ResultItem extends React.Component {
                 <h3 style={{
                         marginBottom: '5px'
                     }}>
-                    <a target="_blank" href={this.props.url} style={{
+                    <a target="_blank" href={`/file/${this.props.id}`} style={{
                         textDecoration: 'none',
                         display: 'inline'
                     }}>{this.props.title}</a>
