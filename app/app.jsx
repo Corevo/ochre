@@ -10,6 +10,7 @@ import searchApp from './redux/reducers';
 import { addResults, showResults } from './redux/actions';
 import Results from './views/results';
 import request from 'superagent';
+import arraySort from 'array-sort';
 
 let store = compose(
     reduxReactRouter({ createHistory })
@@ -26,18 +27,25 @@ class App extends React.Component {
         this.change = this.change.bind(this);
         this.press = this.press.bind(this);
         this.checkboxChange = this.checkboxChange.bind(this);
+        this.dateCheckboxChange = this.dateCheckboxChange.bind(this);
         this.search = this.search.bind(this);
         this.state = {
             pristine: true,
             rtl: false,
             tags: false,
+            sortByDate: false,
             query: ""
         }
     }
     checkboxChange(event) {
         this.setState({
             tags: event.currentTarget.checked
-        })
+        });
+    }
+    dateCheckboxChange(event) {
+      this.setState({
+        sortByDate: event.currentTarget.checked
+      });
     }
     reset() {
         dispatch(showResults(false));
@@ -146,12 +154,18 @@ class App extends React.Component {
                         <label htmlFor="tags" style={{
                                 verticalAlign: 'text-bottom'
                             }}>חיפוש בעזרת תגיות בלבד</label>
+                          <input id="date" onChange={this.dateCheckboxChange} type="checkbox" value="date" style={{
+                            marginRight: '20px'
+                          }}/>
+                        <label htmlFor="date" style={{
+                          verticalAlign: 'text-bottom'
+                        }}>מיין לפי תאריך</label>
                     </div>
                 </div>
             </div>
             <div style={{
                     paddingRight: '117px'
-                }}>{ this.props.showResults ? <Results search={this.search} results={ this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
+                }}>{ this.props.showResults ? <Results search={this.search} results={ this.state.sortByDate ? arraySort([...this.props.results], "date", { reverse: true }) : this.props.results } /> : this.state.pristine ? null : <p>לחץ "Enter" כדי לחפש.</p> }</div>
             </div>
         );
     }
